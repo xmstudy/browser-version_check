@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "版本变化监听器",
+  "version": "1.1.0",
+  "description": "轻量级 DOM 版本监听，支持多标签页同时监听，变化时飞书 Webhook 通知",
+  "permissions": ["storage", "activeTab", "scripting", "alarms"],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

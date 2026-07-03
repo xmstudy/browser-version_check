@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=360">
+  <title>版本变化监听器</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <h1>版本监听器</h1>
+    <p class="subtitle">支持多标签页 / 多 EA 同时监听</p>
+  </header>
+
+  <section>
+    <div class="field">
+      <label for="watchLabel">备注名（可选）</label>
+      <input id="watchLabel" type="text" placeholder="如 Twister Pro EA">
+    </div>
+    <button id="pickBtn" type="button" class="btn primary">添加当前页到监听列表</button>
+    <div id="watchList" class="watch-list">
+      <p class="empty-hint">暂无监听项，打开 EA 页面后点击上方按钮添加</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="field">
+      <label for="extractType">版本提取（新项默认）</label>
+      <select id="extractType">
+        <option value="fullText">全文对比</option>
+        <option value="regex">正则提取</option>
+      </select>
+    </div>
+    <div class="field" id="regexField">
+      <label for="regexPattern">正则表达式</label>
+      <input id="regexPattern" type="text" value="v?(\d+\.\d+\.\d+)" placeholder="v?(\d+\.\d+\.\d+)">
+    </div>
+  </section>
+
+  <section>
+    <div class="field">
+      <label for="webhook">飞书 Webhook URL</label>
+      <input id="webhook" type="url" placeholder="https://open.feishu.cn/open-apis/bot/v2/hook/...">
+    </div>
+    <label class="checkbox-row">
+      <input id="urgentAtAll" type="checkbox" checked>
+      <span>手机强提醒（@所有人）</span>
+    </label>
+    <label class="checkbox-row">
+      <input id="autoRefresh" type="checkbox">
+      <span>定时刷新页面（版本需刷新才更新时启用）</span>
+    </label>
+    <div class="field hidden" id="refreshIntervalField">
+      <label for="refreshIntervalSec">刷新间隔（秒）</label>
+      <input id="refreshIntervalSec" type="number" min="30" step="1" value="900" placeholder="900">
+    </div>
+    <button id="testBtn" type="button" class="btn secondary">测试通知</button>
+  </section>
+
+  <section class="actions">
+    <button id="toggleBtn" type="button" class="btn success" disabled>开始全部监听</button>
+    <p id="status" class="status">请添加至少一个监听项并填写 Webhook</p>
+  </section>
+
+  <script src="../config.local.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+config.local.js
+chrome-extension/
+version-check-release/
+version-check-v*.zip
